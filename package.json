@@ -5,9 +5,17 @@
   "main": "src/server.js",
   "type": "module",
   "scripts": {
+    "main": "node --trace-warnings src/server.js",
+    "ssl": "node .ssl/ssl.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "fastify": "^4.26.1",
+    "fs": "^0.0.1-security",
+    "mongoose": "^8.2.0"
+  }
 }
