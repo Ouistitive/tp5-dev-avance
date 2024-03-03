@@ -20,7 +20,7 @@ export const getAlbums = {
                     type: 'object',
                     properties: {
                         ...albumSchemaResponse.properties,
-                        __v: { type: 'number', exclude: true } // Exclude __v field
+                        __v: { type: 'number', exclude: true }
                     },
                     required: albumSchemaResponse.required,
                     additionalProperties: albumSchemaResponse.additionalProperties
