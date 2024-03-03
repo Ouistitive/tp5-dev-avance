@@ -1,17 +1,16 @@
 import mongoose from 'mongoose';
 import {getDatabaseUri, getDatabaseName} from '../config/config.js';
 
-const databaseUri = "mongodb://127.0.0.1:27017/"
-const databaseName = "tp5"
+const databaseUri = getDatabaseUri();
+const databaseName = getDatabaseName();
 
-export default async function connectDatabase() {
-    await mongoose.connect(`${databaseUri}${databaseName}`);
-
-    const schema = new mongoose.Schema({ title: String, author: String, description: String, format: String });
-    const albums = mongoose.model('albums', schema);
-
-    const armando = new albums({ title: "le bouquin d'armando", author: "armando", description: "c'est le dernier et premier livre d'armando", format: "formarmando" });
-    await armando.save();
-
-    console.log("A");
+async function connectToDatabase() {
+    try {
+        // Connexion à la base de données MongoDB
+        await mongoose.connect(`${databaseUri}${databaseName}`);
+    } catch (error) {
+        console.error('Erreur lors de la connexion à la base de données :', error);
+    }
 }
+
+export const databaseConnection = connectToDatabase;
